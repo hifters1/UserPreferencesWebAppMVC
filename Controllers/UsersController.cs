@@ -49,7 +49,8 @@ namespace UserPreferencesWebApp.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId");
+            ViewData["PreferenceValue"] = new SelectList(_context.Preferences, "PreferenceValue", "PreferenceValue");
+            //ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId");
             return View();
         }
 
@@ -58,7 +59,7 @@ namespace UserPreferencesWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,UserName,PreferenceId,PreferenceValue")] User user)
+        public async Task<IActionResult> Create([Bind("UserId,UserName,PreferenceValue")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +67,8 @@ namespace UserPreferencesWebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId", user.PreferenceId);
-            return View(user);
+            //ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId", user.PreferenceId);
+            ViewData["PreferenceValue"] = new SelectList(_context.Preferences, "PreferenceValue", "PreferenceValue"); return View(user);
         }
 
         // GET: Users/Edit/5
@@ -83,7 +84,8 @@ namespace UserPreferencesWebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId", user.PreferenceId);
+            //ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId", user.PreferenceId);
+            ViewData["PreferenceValue"] = new SelectList(_context.Preferences, "PreferenceValue", "PreferenceValue");
             return View(user);
         }
 
@@ -92,7 +94,7 @@ namespace UserPreferencesWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,PreferenceId")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,PreferenceValue")] User user)
         {
             if (id != user.UserId)
             {
@@ -119,7 +121,8 @@ namespace UserPreferencesWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId", user.PreferenceId);
+            //ViewData["PreferenceId"] = new SelectList(_context.Preferences, "PreferenceId", "PreferenceId", user.PreferenceId);
+            ViewData["PreferenceValue"] = new SelectList(_context.Preferences, "PreferenceValue", "PreferenceValue");
             return View(user);
         }
 
