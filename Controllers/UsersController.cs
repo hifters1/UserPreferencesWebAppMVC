@@ -58,7 +58,7 @@ namespace UserPreferencesWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,UserName,PreferenceId")] User user)
+        public async Task<IActionResult> Create([Bind("UserId,UserName,PreferenceId,PreferenceValue")] User user)
         {
             if (ModelState.IsValid)
             {

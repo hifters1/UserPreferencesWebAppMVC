@@ -10,6 +10,8 @@ using UserPreferencesWebApp.Models;
 
 namespace UserPreferencesWebApp.Controllers
 {
+    //This controller handles the methods for the Preference model.
+    //These methods handle the CRUD operations for the Preference model.
     public class PreferencesController : Controller
     {
         private readonly UserPreferencesWebAppContext _context;
@@ -26,6 +28,7 @@ namespace UserPreferencesWebApp.Controllers
         }
 
         // GET: Preferences/Details/5
+        //Lookup for specific Preference id
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,17 +55,19 @@ namespace UserPreferencesWebApp.Controllers
         // POST: Preferences/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //Create method for adding new Preference
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PreferenceId,PreferenceValue")] Preference preference)
         {
-            if (ModelState.IsValid)
-            {
+            //ModelState is coming back as invalid ???
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(preference);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(preference);
+            //}
+            //return View(preference);
         }
 
         // GET: Preferences/Edit/5

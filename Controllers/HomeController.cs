@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using UserPreferencesWebApp.Models;
 
+//This is the Home controller. There are 2 methods that are handled.
 namespace UserPreferencesWebApp.Controllers
 {
     public class HomeController : Controller

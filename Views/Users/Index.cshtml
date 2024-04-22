@@ -23,13 +23,22 @@
         </tr>
     </thead>
     <tbody>
+@{
+    String DupName = null;
+}
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                    @{
+                        if(DupName != item.UserName)
+                        {
+                            @Html.DisplayFor(modelItem => item.UserName)
+                            DupName = item.UserName.ToString();
+                        }
+                    }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Preferences.PreferenceValue)
+                @Html.DisplayFor(modelItem => item.PreferenceValue)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
