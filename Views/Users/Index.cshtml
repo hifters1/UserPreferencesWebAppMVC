@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                    @{
+                    @{  //Hide the name if it is duplicated
                         if(DupName != item.UserName)
                         {
                             @Html.DisplayFor(modelItem => item.UserName)

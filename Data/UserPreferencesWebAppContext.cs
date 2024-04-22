@@ -3,6 +3,7 @@ using UserPreferencesWebApp.Models;
 
 namespace UserPreferencesWebApp.Data
 {
+    //Defines the type of sets that can be queried from the database
     public class UserPreferencesWebAppContext : DbContext
     {
         public DbSet<User> Users { get; set; }

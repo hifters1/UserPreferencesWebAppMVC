@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Service to connect to SQL database by using the connection string defined in appsettings
 builder.Services.AddDbContext<UserPreferencesWebAppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"))
     );
@@ -29,6 +30,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"); 
 
 app.Run();
